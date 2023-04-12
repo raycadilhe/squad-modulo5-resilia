@@ -10,10 +10,12 @@ app.get('/', (req,res) => {
     res.send('Página principal')
 })
 
+//Servidor rodando na porta 3000
 app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`)
 })
 
+//O middleware "express.json()" irá converter esse JSON em um objeto JavaScript que pode ser manipulado pelo servidor.
 app.use(express.json())
 
 Eventos.eventosRotas(app);
