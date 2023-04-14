@@ -6,6 +6,42 @@ import db from "./db.js";
 
 sqlite3.verbose()
 
+//==== Usuários
+const USUARIOS_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "USUARIOS" (
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "NOME" varchar(64),
+    "EMAIL" varchar(64),
+    "SENHA" varchar(64)
+  );`;
+
+const ADD_USUARIOS_DATA = `
+INSERT INTO USUARIOS (ID, NOME, EMAIL, SENHA)
+VALUES 
+    (1, 'Eugênio Oliveira', 'eugenio.oliveira@bol.com.br', '*******'),
+    (2, 'Olívia Ribeiro', 'olivia.ribeiro@gmail.com', '********'),
+    (3, 'Mirtes Faria Lima', 'mirtes_fl@yahoo.com', '********')
+`
+
+function criaTabelaUsr() {
+    db.run(USUARIOS_SCHEMA, (error)=> {
+       if (error) console.log("Erro ao criar tabela de usuários");
+    });
+}
+
+
+function populaTabelaUsr() {
+    db.run(ADD_USUARIOS_DATA, (error)=> {
+       if (error) console.log("Erro ao popular tabela de usuários");
+    });
+}
+
+db.serialize( ()=> {
+    criaTabelaUsr();
+    populaTabelaUsr();
+});
+
+
 //==== Parceiros
 const PARCEIROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PARCEIROS" (
@@ -44,4 +80,39 @@ db.serialize( ()=> {
     criaTabelaParceiros();
     populaTabelaParceiros();
 
+});
+
+
+//==== Admin
+const ADMIN_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "ADMIN" (
+"ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"NOME" varchar(64),
+"SOBRENOME" varchar(64),
+"EMAIL" varchar(64),
+"SENHA" varchar(64)
+)`
+
+const ADD_ADMIN_DATA = `
+INSERT INTO ADMIN (ID, NOME, SOBRENOME, EMAIL, SENHA)
+VALUES
+    (0, 'Danilo', 'Santos', 'danilo@gmail.com', '********')
+    (1, 'Rayssa', 'Cadilhe, 'rayssa@gmail.com', '***********')
+`
+
+function criaTabelaAdmin() {
+    db.run(ADMIN_SCHEMA, (error) => {
+        if (error) console.log ('Erro ao criar a tabela de Admin');
+    });
+}
+
+function populaTabelaAdmin() {
+    db.run(ADD_ADMIN_DATA, (error) => {
+        if (error) console.log ('Erro ao popular a tabela de Admin')
+    });
+}
+
+db.serialize( () => {
+    criaTabelaAdmin();
+    populaTabelaAdmin();
 });
