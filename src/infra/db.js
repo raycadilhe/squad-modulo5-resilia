@@ -1,8 +1,7 @@
-import Noticias from "../models/noticias.js";
+import  sqlite3  from "sqlite3";
 
-const dbNoticias = []
 
-const noticias = new Noticias()
-dbNoticias.push(noticias)
+sqlite3.verbose()
+const db = new sqlite3.Database("./src/infra/database.db")
 
-export {dbNoticias}
+export default db
