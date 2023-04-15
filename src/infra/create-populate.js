@@ -116,3 +116,39 @@ db.serialize( () => {
     criaTabelaAdmin();
     populaTabelaAdmin();
 });
+
+
+//==== Noticias
+const NOTICIAS_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "NOTICIAS" (
+"ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"GENERO" varchar(64),
+"TITULO" varchar(64),
+"SUBTITULO" varchar(64),
+"ARTIGO" varchar(500),
+"AUTOR" varchar(64),
+"DATA" date,
+"TIME" time
+)`
+
+const ADD_NOTICIAS_DATA = `
+INSERT INTO NOTICIAS (ID, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, TIME)
+VALUES ( 0 , ? , ?, ?, ?, ?, ?, ?)
+`
+
+function criaTabelaNoticias() {
+    db.run(NOTICIAS_SCHEMA, (error) => {
+        if (error) console.log ('Erro ao criar a tabela de notícias');
+    });
+}
+
+function populaTabelaNoticias() {
+    db.run(ADD_NOTICIAS_DATA, (error) => {
+        if (error) console.log ('Erro ao popular a tabela de notícias')
+    });
+}
+
+db.serialize( () => {
+    criaTabelaNoticias();
+    populaTabelaNoticias();
+});

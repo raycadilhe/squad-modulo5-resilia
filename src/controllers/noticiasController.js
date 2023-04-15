@@ -1,62 +1,121 @@
-import Noticias from "../models/noticias.js";
-import { dbNoticias } from "../infra/db.js";
+// Importa o bd.js para poder usar o banco de dados simulado
+import { bdNoticias } from "../bd.js"
+import NoticiasDAO from "../DAO/NoticiasDAO.js"
+import Noticias from "../model/noticias.js"
 
-class NoticiasController{
-
-    static getNoticiasController( app ) {
-
-        // Visualizar todos as noticias
-        app.get('/noticias', (req, resp) =>
-        resp.json(dbNoticias)
-        );
-
-        // Visualizar uma noticia 
-        app.get('/noticias/:index', (req, resp) => {
-            const { index } = req.params;
-            resp.json(dbNoticias[index]);
-        })
-
-       // Visualizar uma noticia 
-        app.post('/noticias/:titulo', (req, resp) => {
-            const buscarTitulo = dbNoticias.filter((elemento) => elemento.email === req.params.email)
-            resp.send(buscarTitulo)   
-        })
-        
-        // Adicionando uma Noticia
-        app.post('/noticias' , (req, resp) => {
-          const { genero, titulo, subtitulo, descricao, autor, data, hora } = req.body
-          const noticiasInserir = new Usuario ( genero, titulo, subtitulo, descricao, autor, data, hora )
-          dbNoticias.push(noticiasInserir)
-          console.log( genero, titulo, subtitulo, descricao, autor, data, hora )
-          resp.json(dbNoticias)
-        })
-
-        // Atualizar dados de uma Noticia 
-        app.put('/noticias/:index', (req, resp) => {
-        const { index } = req.params;
-        const { genero, titulo, subtitulo, descricao, autor, data, hora } = req.body;
-
-        dbNoticias[index].genero = genero
-        dbNoticias[index].titulo = titulo
-        dbNoticias[index].subtitulo = subtitulo
-        dbNoticias[index].descricao = descricao
-        dbNoticias[index].autor = autor
-        dbNoticias[index].data = data
-        dbNoticias[index].hora = hora
-        console.log( genero, titulo, subtitulo, descricao, autor, data, hora )
-        resp.json(dbNoticias)
-        })
-        
-        // Excluir uma Noticia
-        app.delete('/noticias/:index', (req, resp) => {
-            const { index } = req.params;
-
-            db.splice(index, 1)
-            resp.json({ message: 'Usuário deletado com sucesso'})
-        })
-    
+class noticiasController {
+    static rotas(app){
+        // Rota para o recurso notícias
+        app.get('/noticia', noticiasController.listar)
+        app.post('/noticia', noticiasController.inserir)
+        app.get("/noticia/:titulo", noticiasController.filtrarPorTitulo)
+        app.delete("/noticia/:id", noticiasController.apagarNoticia)
+        app.put("/noticia/id/:id", noticiasController.atualizarNoticia)
     }
+    
+    // GET -- Listar todos os usuários
+    static async listar(req, res){
+        const resultado = await NoticiasDAO.listar()
+        res.send(resultado)
+    }
+    
+    // POST  --  Criar um novo usuário
+    static async inserir(req, res) {
+        const noticia = {
+            genero: req.body.genero,
+            titulo: req.body.titulo,
+            subtitulo: req.body.subtitulo,
+            artigo: req.body.artigo,
+            autor: req.body.autor,
+            data: req.body.data, 
+            hora: req.body.hora
+        }
+
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
+            || !noticia.artigo || !noticia.autor || noticia.data || noticia.hora) {
+            res.status(400).send("Precisa passar as informações")
+            return
+        }
+
+        const result = await NoticiasDAO.inserir(noticia)
+
+        try {
+            res.status(201).send({ "Mensagem": "notícia criada com sucesso", "Nova notícia: ": noticia })
+        } catch (error) {
+            res.status(500).send(result)
+        }
+    }
+
+    // GET -- BUSCAR POR TITULO
+    static async filtrarPorTitulo(req, res){
+        const noticia = await NoticiasDAO.buscarPorTitulo(req.params.titulo)
+
+        if (!noticia) {
+
+            res.status(404).send("titulo não encontrado")
+        }
+
+        res.status(200).send(n)      
+    }
+    
+    // DELETE -- Deletar notícia pelo id
+    static async apagarNoticia(req, res){
+       const noticia = await NoticiasDAO.buscarPorID(req.params.id)
+
+       if(!noticia){
+           res.status(404).send("Notícia não encontrado")
+           return
+       }
+
+       const result = await NoticiasDAO.deletar(req.params.id)
+
+       if(result.erro){
+            res.status(400).send({ 'Mensagem': 'Notícia não deletada' })
+            return
+       }
+
+       res.status(200).send(result)
+    }
+
+    // PUT -- Atualizar notícia
+    static async atualizarNoticia(req, res) {
+        const id = await NoticiasDAO.buscarPorID(req.params.id)
+        if (!id) {
+            res.status(404).send('Noticia não encontrada')
+            return
+        }
+
+        const noticia = new Noticias(
+            req.body.genero,
+            req.body.titulo,
+            req.body.subtitulo,
+            req.body.artigo,
+            req.body.autor,
+            req.body.data, 
+            req.body.hora
+        )
+
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
+            || !noticia.artigo || !noticia.autor || noticia.data || noticia.hora) {
+            res.status(400).send("Precisa passar as informações")
+            return
+        }
+
+        if (!Object.keys(noticia).length) {
+            res.status(400).send('O objeto está sem chave')
+            return
+        }
+
+        const result = await NoticiasDAO.atualizar(req.params.id, noticia)
+
+        if (result.erro) {
+            res.status(500).send('Erro ao atualizar o usuario')
+            return
+        }
+
+        res.status(200).send({ "Mensagem": "Dados atualizados", "notícia: ": noticia })
+
+    }      
 }
 
-
-export default NoticiasController;
+export default noticiasController

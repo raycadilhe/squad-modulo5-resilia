@@ -4,7 +4,6 @@ class Usuario {
         this.sobrenome = sobrenome,
         this.email = email,
         this.senha = senha
-
     }
 }
 
