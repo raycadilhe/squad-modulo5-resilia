@@ -28,9 +28,9 @@ const admin2 = new Admin('1', 'Rayssa', 'Cadilhe', 'rayssa@gmail.com', 'Senha')
 bdAdmin.push(admin2)
 
 // Cria um objeto do tipo noticias e adiciona a lista de noticias
-const noticias = new Noticias('0', 'Parceiro', 'urlLogo', 'Descricao', '', '', '', '')
+const noticias = new Noticias('0', '', '', '', '', '', '', '')
 bdParceiros.push(noticias)
-const noticias2 = new Noticias('1', 'Parceiro', 'urlLogo', 'Descricao', '', '', '', '')
+const noticias2 = new Noticias('1', '', '', '', '', '', '', '')
 bdParceiros.push(noticias2)
 
 // Exporta as listas de objetos
