@@ -9,7 +9,7 @@ class parceirosController {
         app.get('/parceiros', parceirosController.listar)
         app.post('/parceiros', parceirosController.inserir)
         app.post("/parceiros/:nome", parceirosController.filtrarPorNome)
-        app.delete("/parceiros/:nome", parceirosController.apagarParceiro)
+        app.delete("/parceiros/:nome", parceirosController.apagarParceiros)
         app.put("/parceiros/:id/:id", parceirosController.atualizarParceiros)
     }
 

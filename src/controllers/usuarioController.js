@@ -1,7 +1,7 @@
 // Importa o bd.js para poder usar o banco de dados simulado
 import { bdUsuario } from "../bd.js"
 import UsuarioDAO from "../DAO/UsuarioDAO.js"
-import Usuario from "../model/usuario.js"
+import Usuario from "../models/usuario.js"
 
 class usuarioController {
     static rotas(app){

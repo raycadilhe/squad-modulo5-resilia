@@ -1,7 +1,7 @@
-import Usuario from './model/usuario.js'
-import Parceiros from './model/Parceiros.js'
-import Admin from './model/admin.js'
-import Noticias from './model/noticias.js'
+import Usuario from './models/usuario.js'
+import Parceiros from './models/Parceiros.js'
+import Admin from './models/admin.js'
+import Noticias from './models/noticias.js'
 
 // Cria vários objetos e os adiciona a um array para simular uma lista de objetos
 const bdUsuario = []
