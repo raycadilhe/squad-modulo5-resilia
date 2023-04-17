@@ -100,7 +100,7 @@ class contatoController {
             }
 
             if (!Object.keys(admin).length){
-                res.status(400).send('O objetivo está sem chave')
+                res.status(400).send('O objeto está sem chave')
                 return
             }
 
