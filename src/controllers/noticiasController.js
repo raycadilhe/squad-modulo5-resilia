@@ -1,7 +1,7 @@
 // Importa o bd.js para poder usar o banco de dados simulado
 import { bdNoticias } from "../bd.js"
 import NoticiasDAO from "../DAO/NoticiasDAO.js"
-import Noticias from "../model/noticias.js"
+import Noticias from "../models/noticias.js"
 
 class noticiasController {
     static rotas(app){

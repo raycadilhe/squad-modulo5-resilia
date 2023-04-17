@@ -8,9 +8,9 @@ class adminController {
         // Rota para o recurso Admin
         app.get("/admin", adminController.listar)
         app.post("/admin", adminController.inserir)
-        app.get("/admin/:email", adminController.filtrarPorEmail)
+        app.get("/admin/:email", adminController.filtrarPoremail)
         app.delete("/admin/:email", adminController.apagarAdmin)
-        app.put("/admin/id/:id", adminController.atualizarAdmin)
+        app.put("/admin/id/:id", adminController.atualizaradmin)
     }
     
     // GET -- Listar todos os Administradores
