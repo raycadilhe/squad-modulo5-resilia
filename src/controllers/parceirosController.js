@@ -15,7 +15,7 @@ class parceirosController {
 
     // GET -- Listar todos os usuários
     static async listar(req, res){
-        const resultado = await ParceiroDAO.listar()
+        const resultado = await ParceirosDAO.listar()
         res.send(resultado)
     }
 

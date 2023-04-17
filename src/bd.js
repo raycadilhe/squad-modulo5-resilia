@@ -2,13 +2,14 @@ import Usuario from './models/usuario.js'
 import Parceiros from './models/Parceiros.js'
 import Admin from './models/admin.js'
 import Noticias from './models/noticias.js'
+import Contatos from './models/contato.js'
 
 // Cria vários objetos e os adiciona a um array para simular uma lista de objetos
 const bdUsuario = []
 const bdParceiros = []
 const bdAdmin = []
 const bdNoticias = []
-
+const bdContato = []
 // Cria um objeto do tipo Usuario e adiciona a lista de usuarios
 const usuario = new Usuario('Nome do usuário', 'ulysses@gmail.com', 'Senha')
 bdUsuario.push(usuario)
@@ -33,5 +34,8 @@ bdParceiros.push(noticias)
 const noticias2 = new Noticias('1', '', '', '', '', '', '', '')
 bdParceiros.push(noticias2)
 
+//Cria um objeto do tipo Contato e adiciona a lista de Contato
+const contato =new Contatos ('0', '', '', '', '', '', '', '', '')
+
 // Exporta as listas de objetos
-export { bdUsuario, bdParceiros, bdAdmin, bdNoticias }
+export { bdUsuario, bdParceiros, bdAdmin, bdNoticias, bdContato }
