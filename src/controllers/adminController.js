@@ -1,5 +1,4 @@
 // Importa o bd.js para poder usar o banco de dados simulado
-import { bdUsuario } from "../bd.js"
 import AdminDAO from "../DAO/AdminDAO.js"
 import Admin from "../models/admin.js"
 
