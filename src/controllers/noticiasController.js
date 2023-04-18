@@ -1,111 +1,120 @@
 // Importa o bd.js para poder usar o banco de dados simulado
-import ImagensDAO from "../DAO/ImagensDAO.js"
-import Imagens from "../models/imagens.js"
+import NoticiasDAO from "../DAO/NoticiasDAO.js"
+import Noticias from "../models/Noticias.js"
 
-class imagensController {
+class noticiasController {
     static rotas(app){
-        // Rota para o recurso imagem
-        app.get('/imagem', imagensController.listar)
-        app.post('/imagem', imagensController.inserir)
-        app.get("/imagem/:titulo", imagensController.filtrarPorTitulo)
-        app.delete("/imagem/:email", imagensController.apagarImagem)
-        app.put("/imagem/id/:id", imagensController.atualizarImagem)
+        // Rota para o recurso notícias
+        app.get('/noticia', noticiasController.listar)
+        app.post('/noticia', noticiasController.inserir)
+        app.get("/noticia/:titulo", noticiasController.filtrarPorTitulo)
+        app.delete("/noticia/:id", noticiasController.apagarNoticia)
+        app.put("/noticia/id/:id", noticiasController.atualizarNoticia)
     }
-    
-    // GET -- Listar todas as imagens
+
+    // GET -- Listar todos os usuários
     static async listar(req, res){
-        const resultado = await ImagensDAO.listar()
+        const resultado = await NoticiasDAO.listar()
         res.send(resultado)
-  
     }
-    
-    // POST  --  Criar uma nova imgem
+
+    // POST  --  Criar um novo usuário
     static async inserir(req, res) {
-        const imagem = {
+        const noticia = {
+            genero: req.body.genero,
             titulo: req.body.titulo,
-            descricao: req.body.descricao,
-            url: req.body.url
+            subtitulo: req.body.subtitulo,
+            artigo: req.body.artigo,
+            autor: req.body.autor,
+            data: req.body.data, 
+            hora: req.body.hora
         }
 
-        if (!imagem || !imagem.nome || !imagem.email || !imagem.senha) {
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
+            || !noticia.artigo || !noticia.autor || noticia.data || noticia.hora) {
             res.status(400).send("Precisa passar as informações")
             return
         }
 
+        const result = await NoticiasDAO.inserir(noticia)
 
-        const result = await ImagensDAO.inserir(imagem)
-
-
-        if (result.erro) {
+        try {
+            res.status(201).send({ "Mensagem": "notícia criada com sucesso", "Nova notícia: ": noticia })
+        } catch (error) {
             res.status(500).send(result)
         }
-
-        res.status(201).send({ "Mensagem": "imagem inserida com sucesso", "Nova imagem: ": imagem })
     }
 
     // GET -- BUSCAR POR TITULO
     static async filtrarPorTitulo(req, res){
-        const imagem = await ImagensDAO.buscarPorTitulo(req.params.titulo)
+        const noticia = await NoticiasDAO.buscarPorTitulo(req.params.titulo)
 
-        if (!imagem) {
+        if (!noticia) {
 
-            res.status(404).send("titulo da imagem não encontrado")
+            res.status(404).send("titulo não encontrado")
         }
 
-        res.status(200).send(imagem)      
+        res.status(200).send(n)      
     }
-    
-    // DELETE -- Deletar uma imagem pelo titulo
-    static async apagarImagem(req, res){
-       const imagem = await ImagensDAO.buscarPorTitulo(req.params.titulo)
 
-       if(!imagem){
-           res.status(404).send("Imagem não encontrada")
+    // DELETE -- Deletar notícia pelo id
+    static async apagarNoticia(req, res){
+       const noticia = await NoticiasDAO.buscarPorID(req.params.id)
+
+       if(!noticia){
+           res.status(404).send("Notícia não encontrado")
            return
        }
 
-       const result = await ImagensDAO.deletar(req.params.titulo)
+       const result = await NoticiasDAO.deletar(req.params.id)
 
        if(result.erro){
-            res.status(400).send({ 'Mensagem': 'Imagem não deletado' })
+            res.status(400).send({ 'Mensagem': 'Notícia não deletada' })
             return
        }
 
        res.status(200).send(result)
     }
 
-    // PUT -- Atualizar uma Imagem
-    static async atualizarImagem(req, res) {
-        const id = await ImagensDAO.buscarPorID(req.params.id)
+    // PUT -- Atualizar notícia
+    static async atualizarNoticia(req, res) {
+        const id = await NoticiasDAO.buscarPorID(req.params.id)
         if (!id) {
-            res.status(404).send('imagem não encontrado')
+            res.status(404).send('Noticia não encontrada')
             return
         }
 
-        const imagem = new Imagens(req.body.titulo, req.body.descricao, req.body.url)
+        const noticia = new Noticias(
+            req.body.genero,
+            req.body.titulo,
+            req.body.subtitulo,
+            req.body.artigo,
+            req.body.autor,
+            req.body.data, 
+            req.body.hora
+        )
 
-
-
-        if (!imagem || !imagem.nome || !imagem.email || !imagem.senha) {
-            res.status(400).send("Precisa passar todas as informações")
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
+            || !noticia.artigo || !noticia.autor || noticia.data || noticia.hora) {
+            res.status(400).send("Precisa passar as informações")
             return
         }
 
-        if (!Object.keys(imagem).length) {
+        if (!Object.keys(noticia).length) {
             res.status(400).send('O objeto está sem chave')
             return
         }
 
-        const result = await ImagensDAO.atualizar(req.params.id, imagem)
+        const result = await NoticiasDAO.atualizar(req.params.id, noticia)
 
         if (result.erro) {
-            res.status(500).send('Erro ao atualizar a imagem')
+            res.status(500).send('Erro ao atualizar o usuario')
             return
         }
 
-        res.status(200).send({ "Mensagem": "Dados atualizados", "imagem: ": imagem })
+        res.status(200).send({ "Mensagem": "Dados atualizados", "notícia: ": noticia })
 
     }      
 }
 
-export default imagensController
+export default noticiasController

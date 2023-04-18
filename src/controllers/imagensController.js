@@ -1,6 +1,6 @@
 // Importa o bd.js para poder usar o banco de dados simulado
 import ImagensDAO from "../DAO/ImagensDAO.js"
-import Imagens from "../models/imagens.js"
+import Imagens from "../models/Imagens.js"
 
 class imagensController {
     static rotas(app){
@@ -11,14 +11,14 @@ class imagensController {
         app.delete("/imagem/:email", imagensController.apagarImagem)
         app.put("/imagem/id/:id", imagensController.atualizarImagem)
     }
-    
+
     // GET -- Listar todas as imagens
     static async listar(req, res){
         const resultado = await ImagensDAO.listar()
         res.send(resultado)
-  
+
     }
-    
+
     // POST  --  Criar uma nova imgem
     static async inserir(req, res) {
         const imagem = {
@@ -54,7 +54,7 @@ class imagensController {
 
         res.status(200).send(imagem)      
     }
-    
+
     // DELETE -- Deletar uma imagem pelo titulo
     static async apagarImagem(req, res){
        const imagem = await ImagensDAO.buscarPorTitulo(req.params.titulo)

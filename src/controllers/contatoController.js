@@ -1,5 +1,5 @@
 import ContatoDAO from '../DAO/ContatoDAO.js'
-import Contato from '../models/contato.js'
+import Contato from '../models/Contato.js'
 
 class contatoController {
     static rotas(app) {

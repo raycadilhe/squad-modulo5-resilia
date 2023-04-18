@@ -1,6 +1,6 @@
 // Importa o bd.js para poder usar o banco de dados simulado
 import ParceirosDAO from "../DAO/ParceirosDAO.js"
-import Parceiros from "../models/parceiros.js"
+import Parceiros from "../models/Parceiros.js"
 
 class parceirosController {
     static rotas(app){

@@ -1,6 +1,6 @@
 // Importa o bd.js para poder usar o banco de dados simulado
 import AdminDAO from "../DAO/AdminDAO.js"
-import Admin from "../models/admin.js"
+import Admin from "../models/Admin.js"
 
 class adminController {
     static rotas(app){
