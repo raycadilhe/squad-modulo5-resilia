@@ -118,4 +118,4 @@ class NoticiasDAO {
   }
 }
 
-export default NoticiasDAO;
+export default NoticiasDAO

@@ -57,7 +57,7 @@ class UsuarioDAO {
         });
       }
 
-  // PUT  --  Atualizando usuários
+  // PUT  --  
   static atualizar(id, usuario){
     const query =
     "UPDATE USUARIOS SET nome = ?, email = ?, senha = ? WHERE id = ?";

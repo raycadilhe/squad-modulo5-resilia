@@ -25,24 +25,17 @@ VALUES
 
 function criaTabelaUsr() {
     db.run(USUARIOS_SCHEMA, (error)=> {
-       if (error) console.log("Erro ao criar tabela de usuários");
+       if (error) console.log(error);
     });
 }
 
 
 function populaTabelaUsr() {
     db.run(ADD_USUARIOS_DATA, (error)=> {
-       if (error) console.log("Erro ao popular tabela de usuários");
+       if (error) console.log(error);
     });
 }
 
-db.serialize( ()=> {
-    criaTabelaUsr();
-    populaTabelaUsr();
-});
-
-
-//==== Parceiros
 const PARCEIROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PARCEIROS" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -75,14 +68,6 @@ function populaTabelaParceiros() {
     });
 }
 
-
-db.serialize( ()=> {
-    criaTabelaParceiros();
-    populaTabelaParceiros();
-
-});
-
-
 //==== Admin
 const ADMIN_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ADMIN" (
@@ -96,26 +81,83 @@ CREATE TABLE IF NOT EXISTS "ADMIN" (
 const ADD_ADMIN_DATA = `
 INSERT INTO ADMIN (ID, NOME, SOBRENOME, EMAIL, SENHA)
 VALUES
-    (0, 'Danilo', 'Santos', 'danilo@gmail.com', '********')
-    (1, 'Rayssa', 'Cadilhe, 'rayssa@gmail.com', '***********')
+    (0, 'Danilo', 'Santos', 'danilo@gmail.com', '************'),
+    (1, 'Rayssa', 'Cadilhe', 'rayssa@gmail.com', '***********')
 `
 
 function criaTabelaAdmin() {
     db.run(ADMIN_SCHEMA, (error) => {
         if (error) console.log ('Erro ao criar a tabela de Admin');
     });
-}
+};
 
 function populaTabelaAdmin() {
-    db.run(ADD_ADMIN_DATA, (error) => {
-        if (error) console.log ('Erro ao popular a tabela de Admin')
+    db.run(ADD_ADMIN_DATA, (error)=> {
+        if (error) console.log(error);
+     });
+};
+
+//==== CONTATO
+const CONTATO_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "CONTATO" (
+"ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+"NOME" varchar(64),
+"SOBRENOME" varchar(64),
+"EMAIL" varchar(64),
+"COMENTARIO" varchar(64),
+"CONCEITO" varchar(64),
+"DATA" varchar(64),
+"HORA" varchar(64)
+)`
+
+const ADD_CONTATO_DATA = `
+INSERT INTO CONTATO (ID, NOME, SOBRENOME, EMAIL, COMENTARIO, CONCEITO, DATA, HORA)
+VALUES
+    (0, 'Anderson', 'Vasco', 'caiujacaiu@gmail.com', 'TESTE DE COMENTARIO' , '5' , '17/04/2023', '21:05')
+`
+
+function criaTabelaContato() {
+    db.run(CONTATO_SCHEMA, (error) => {
+        if (error) console.log ('Erro ao criar a tabela de CONTATO');
+    });
+};
+
+function populaTabelaContato() {
+    db.run(ADD_CONTATO_DATA, (error)=> {
+        if (error) console.log(error);
+     });
+};
+
+//==== Imagens
+const IMAGENS_SCHEMA = `
+CREATE TABLE IF NOT EXISTS "IMAGENS" (
+    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
+    "TITULO" varchar(64),
+    "DESCRICAO" varchar(300),
+    "URL" varchar(64)
+  )`
+
+const ADD_IMAGENS_DATA = `
+INSERT INTO IMAGENS (ID, TITULO, DESCRICAO, URL)
+VALUES 
+    (1, 'Arteiros - Cidade de Deus', 'Formado por crianças e adolescentes com faixa etária entre 09 e 18 anos, na sua maioria moradores da Cidade de Deus.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/326506739_1147356152643248_2154653146716669189_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGOgbioSV9BZ8-m9rkVvxs2OwjrSV4iJsw7COtJXiImzAhChlJEiyJjgoS61Y290MuZn_gexN5k21_vR2KoCRXS&_nc_ohc=Q17ulSv_LPwAX8lJ63L&_nc_ht=scontent.fgig18-1.fna&oh=00_AfA775U6wbdKm9ZVz-i61UFjWyzIsdXRRktylu82TJE18Q&oe=644389C9'),
+    (2, 'Brasil Esperança', 'Sustentabilidade, eficiência e baixo custo de obra, pra ajudar quem mais precisa.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/307309696_425127473035239_1206793186502964153_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG6P7YBLISoCz4P6bwy1S-88C5RSDGszEjwLlFIMazMSIZdJsvUFYexeXVZLl0FWkAL83yBp66zJM-SMRKc19zH&_nc_ohc=OhNxvAFEbwIAX9lGEEA&_nc_ht=scontent.fgig18-1.fna&oh=00_AfDMcN_gT26anx-9CUxnJtZfxsFj7S839ROsHJid33V__Q&oe=6443679F'),
+    (3, 'Recomeçando','Recomeçando é uma instituição sem fins lucrativos que atua na formação de cidadãos desde a infância para mudar o mundo. Acreditamos com todas as nossas forças que se hoje investirmos nas crianças e empoderarmos mulheres garantiremos um amanhã brilhante para o nosso planeta.', 'https://recomecando.ong.br/wp-content/uploads/2022/03/LOGO-ONG-RECOMEC%CC%A7ANDO-4-e1653963140492-2048x993.png' )
+`
+
+function criaTabelaImagens() {
+    db.run(IMAGENS_SCHEMA, (error)=> {
+       if (error) console.log(error);
     });
 }
 
-db.serialize( () => {
-    criaTabelaAdmin();
-    populaTabelaAdmin();
-});
+
+function populaTabelaImagens() {
+    db.run(ADD_IMAGENS_DATA, (error)=> {
+       if (error) console.log(error);
+    });
+}
+
 
 
 //==== Noticias
@@ -132,7 +174,7 @@ CREATE TABLE IF NOT EXISTS "NOTICIAS" (
 )`
 
 const ADD_NOTICIAS_DATA = `
-INSERT INTO NOTICIAS (ID, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, TIME)
+INSERT INTO NOTICIAS (ID,GENERO, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, TIME)
 VALUES ( 0 , ? , ?, ?, ?, ?, ?, ?)
 `
 
@@ -148,46 +190,19 @@ function populaTabelaNoticias() {
     });
 }
 
-db.serialize( () => {
-    criaTabelaNoticias();
-    populaTabelaNoticias();
-});
-
-
-//==== Imagens
-const IMAGENS_SCHEMA = `
-CREATE TABLE IF NOT EXISTS "IMAGENS" (
-    "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
-    "TITULO" varchar(64),
-    "DESCRICAO" varchar(300)
-    "URL" varchar(64),
-  );`;
-
-const ADD_IMAGENS_DATA = `
-INSERT INTO IMAGENS (ID, NOME, DESCRICAO, URL)
-VALUES 
-    (1, 'Arteiros - Cidade de Deus', 'Formado por crianças e adolescentes com faixa etária entre 09 e 18 anos, na sua maioria moradores da Cidade de Deus.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/326506739_1147356152643248_2154653146716669189_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGOgbioSV9BZ8-m9rkVvxs2OwjrSV4iJsw7COtJXiImzAhChlJEiyJjgoS61Y290MuZn_gexN5k21_vR2KoCRXS&_nc_ohc=Q17ulSv_LPwAX8lJ63L&_nc_ht=scontent.fgig18-1.fna&oh=00_AfA775U6wbdKm9ZVz-i61UFjWyzIsdXRRktylu82TJE18Q&oe=644389C9'),
-    (2, 'Brasil Esperança', 'Sustentabilidade, eficiência e baixo custo de obra, pra ajudar quem mais precisa.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/307309696_425127473035239_1206793186502964153_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG6P7YBLISoCz4P6bwy1S-88C5RSDGszEjwLlFIMazMSIZdJsvUFYexeXVZLl0FWkAL83yBp66zJM-SMRKc19zH&_nc_ohc=OhNxvAFEbwIAX9lGEEA&_nc_ht=scontent.fgig18-1.fna&oh=00_AfDMcN_gT26anx-9CUxnJtZfxsFj7S839ROsHJid33V__Q&oe=6443679F'),
-    (3, 'Recomeçando','
-    Recomeçando é uma instituição sem fins lucrativos que atua na formação de cidadãos desde a infância para mudar o mundo. Acreditamos com todas as nossas forças que se hoje investirmos nas crianças e empoderarmos mulheres garantiremos um amanhã brilhante para o nosso planeta.', 'https://recomecando.ong.br/wp-content/uploads/2022/03/LOGO-ONG-RECOMEC%CC%A7ANDO-4-e1653963140492-2048x993.png' ),
-`
-
-function criaTabelaImagens() {
-    db.run(IMAGENS_SCHEMA, (error)=> {
-       if (error) console.log("Erro ao criar tabela de imagens");
-    });
-}
-
-
-function populaTabelaImagens() {
-    db.run(ADD_IMAGENS_DATA, (error)=> {
-       if (error) console.log("Erro ao popular tabela de imagens");
-    });
-}
 
 
 db.serialize( ()=> {
+    criaTabelaUsr();
+    populaTabelaUsr();
+    criaTabelaParceiros();
+    populaTabelaParceiros();
+    criaTabelaNoticias();
+    populaTabelaNoticias();
+    criaTabelaAdmin();
+    populaTabelaAdmin();
+    criaTabelaContato();
+    populaTabelaContato();
     criaTabelaImagens();
-    populaTabelaImagens();
-
+    populaTabelaImagens()
 });

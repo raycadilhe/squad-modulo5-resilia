@@ -1,5 +1,4 @@
 // Importa o bd.js para poder usar o banco de dados simulado
-import { bdImagens } from "../bd.js"
 import ImagensDAO from "../DAO/ImagensDAO.js"
 import Imagens from "../models/imagens.js"
 
