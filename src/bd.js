@@ -1,5 +1,5 @@
 import Usuario from './models/usuario.js'
-import Parceiros from './models/Parceiros.js'
+import Parceiros from './models/parceiros.js'
 import Admin from './models/admin.js'
 import Noticias from './models/noticias.js'
 import Contatos from './models/contato.js'
@@ -33,8 +33,6 @@ bdAdmin.push(admin2)
 // Cria um objeto do tipo noticias e adiciona a lista de noticias
 const noticias = new Noticias('0', '', '', '', '', '', '', '')
 bdParceiros.push(noticias)
-const noticias2 = new Noticias('1', '', '', '', '', '', '', '')
-bdParceiros.push(noticias2)
 
 //Cria um objeto do tipo Contato e adiciona a lista de Contato
 const contato =new Contatos ('0', '', '', '', '', '', '', '', '')
