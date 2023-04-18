@@ -7,6 +7,7 @@ import imagensController from './src/controllers/imagensController.js';
 import noticiasController from './src/controllers/noticiasController.js';
 import parceirosController from './src/controllers/parceirosController.js';
 
+
 // Importando o express
 
 const app = express();

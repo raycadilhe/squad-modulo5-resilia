@@ -8,7 +8,7 @@ const app = express()
 app.use(express.json())
 
 // importando os controllers
-import usuarioController from './controllers/usuarioController.js'
+import usuarioController from './controllers/usuarioController.js';
 import adminController from './controllers/adminController.js';
 import contatoController from './controllers/contatoController.js';
 import imagensController from './controllers/imagensController.js';

@@ -10,4 +10,4 @@ class Contato{
         this.hora = hora
     }
 }
-export default Contato;
+export default Contato

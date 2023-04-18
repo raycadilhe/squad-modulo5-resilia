@@ -7,4 +7,4 @@ class Imagens {
     }
 }
 
-export default Imagens;
+export default Imagens

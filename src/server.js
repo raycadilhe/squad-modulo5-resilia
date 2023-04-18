@@ -1,4 +1,3 @@
-
 import app from './app.js'
 
 // escolhendo a porta em que o servidor será aberto

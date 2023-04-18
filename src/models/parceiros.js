@@ -6,4 +6,4 @@ class Parceiros {
     }
 }
 
-export default Parceiros;
+export default Parceiros
