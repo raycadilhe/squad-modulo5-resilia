@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "USUARIOS" (
   );`;
 
 const ADD_USUARIOS_DATA = `
-INSERT INTO USUARIOS (ID, NOME, EMAIL, SENHA)
+INSERT INTO USUARIOS (NOME, EMAIL, SENHA)
 VALUES 
     ('Eugênio Oliveira', 'eugenio.oliveira@bol.com.br', '*******'),
     ('Olívia Ribeiro', 'olivia.ribeiro@gmail.com', '********'),
@@ -46,7 +46,7 @@ CREATE TABLE IF NOT EXISTS "PARCEIROS" (
   );`;
 
 const ADD_PARCEIROS_DATA = `
-INSERT INTO PARCEIROS (ID, NOME, URLLOGO, DESCRICAO)
+INSERT INTO PARCEIROS (NOME, URLLOGO, DESCRICAO)
 VALUES 
     ('Prefeitura do Rio de Janeiro', 'https://drive.google.com/file/d/1-NRM6CaDzo4Mt2rSASEfjLhOW1Z6MGYg/view?usp=sharing', 'Instituição sede do poder executivo do município do Rio de Janeiro.'),
     ('Senac', 'https://drive.google.com/file/d/1-BL20HcOgWdbXGOshXluuXJtBvyc8wzF/view?usp=sharing', 'Desde 1946, o Serviço Nacional de Aprendizagem Comercial – Senac é o principal agente de educação profissional voltado para o Comércio de Bens, Serviços e Turismo do País.'),
@@ -80,7 +80,7 @@ CREATE TABLE IF NOT EXISTS "ADMIN" (
 )`
 
 const ADD_ADMIN_DATA = `
-INSERT INTO ADMIN (ID, NOME, SOBRENOME, EMAIL, SENHA)
+INSERT INTO ADMIN (NOME, SOBRENOME, EMAIL, SENHA)
 VALUES
     ('Danilo', 'Santos', 'danilo@gmail.com', '************'),
     ('Rayssa', 'Cadilhe', 'rayssa@gmail.com', '***********')
@@ -112,7 +112,7 @@ CREATE TABLE IF NOT EXISTS "CONTATO" (
 )`
 
 const ADD_CONTATO_DATA = `
-INSERT INTO CONTATO (ID, NOME, SOBRENOME, EMAIL, COMENTARIO, CONCEITO, DATA, HORA)
+INSERT INTO CONTATO (NOME, SOBRENOME, EMAIL, COMENTARIO, CONCEITO, DATA, HORA)
 VALUES
     ('Anderson', 'Vasco', 'caiujacaiu@gmail.com', 'TESTE DE COMENTARIO' , '5' , '17/04/2023', '21:05')
 `
@@ -139,7 +139,7 @@ CREATE TABLE IF NOT EXISTS "IMAGENS" (
   )`
 
 const ADD_IMAGENS_DATA = `
-INSERT INTO IMAGENS (ID, TITULO, DESCRICAO, URL)
+INSERT INTO IMAGENS (TITULO, DESCRICAO, URL)
 VALUES 
     ('Arteiros - Cidade de Deus', 'Formado por crianças e adolescentes com faixa etária entre 09 e 18 anos, na sua maioria moradores da Cidade de Deus.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/326506739_1147356152643248_2154653146716669189_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGOgbioSV9BZ8-m9rkVvxs2OwjrSV4iJsw7COtJXiImzAhChlJEiyJjgoS61Y290MuZn_gexN5k21_vR2KoCRXS&_nc_ohc=Q17ulSv_LPwAX8lJ63L&_nc_ht=scontent.fgig18-1.fna&oh=00_AfA775U6wbdKm9ZVz-i61UFjWyzIsdXRRktylu82TJE18Q&oe=644389C9'),
     ('Brasil Esperança', 'Sustentabilidade, eficiência e baixo custo de obra, pra ajudar quem mais precisa.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/307309696_425127473035239_1206793186502964153_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG6P7YBLISoCz4P6bwy1S-88C5RSDGszEjwLlFIMazMSIZdJsvUFYexeXVZLl0FWkAL83yBp66zJM-SMRKc19zH&_nc_ohc=OhNxvAFEbwIAX9lGEEA&_nc_ht=scontent.fgig18-1.fna&oh=00_AfDMcN_gT26anx-9CUxnJtZfxsFj7S839ROsHJid33V__Q&oe=6443679F'),
