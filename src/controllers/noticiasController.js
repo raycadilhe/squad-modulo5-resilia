@@ -30,19 +30,18 @@ class noticiasController {
             hora: req.body.hora
         }
 
-        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
-            || !noticia.artigo || !noticia.autor || !noticia.data || !noticia.hora) {
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo || !noticia.artigo || !noticia.autor || !noticia.data || !noticia.hora) {
             res.status(400).send("Precisa passar as informações")
             return
         }
 
         const result = await NoticiasDAO.inserir(noticia)
 
-        try {
-            res.status(201).send({ "Mensagem": "notícia criada com sucesso", "Nova notícia: ": noticia })
-        } catch (error) {
+        if (result.erro) {
             res.status(500).send(result)
         }
+
+        res.status(201).send({ "Mensagem": "noticia criado com sucesso", "Nova noticia: ": noticia })
     }
 
     // GET -- BUSCAR POR TITULO
