@@ -17,14 +17,14 @@ class ImagensDAO {
      
     // POST  --  Criar uma nova imagem
     static inserir(imagem){
-         const query = `INSERT INTO IMAGENS (Titulo, Descrição, Url) VALUES (?, ?, ?)`;
+         const query = `INSERT INTO IMAGENS (Titulo, Descricao, Url) VALUES (?, ?, ?)`;
 
          return new Promise((resolve, reject) => {
              db.run(query, 
               [
-                imagem.nome, 
-                imagem.email, 
-                imagem.senha
+                imagem.titulo, 
+                imagem.descricao, 
+                imagem.url
               ], 
               (err) =>{
                 if (err){
@@ -72,7 +72,7 @@ class ImagensDAO {
         query,
         [
         imagem.titulo, 
-        imagem.descrição, 
+        imagem.descricao, 
         imagem.url,
         id
         ],
