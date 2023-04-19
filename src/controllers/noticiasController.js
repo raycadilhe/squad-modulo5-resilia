@@ -93,8 +93,7 @@ class noticiasController {
             req.body.hora
         )
 
-        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo
-            || !noticia.artigo || !noticia.autor || !noticia.data || !noticia.hora) {
+        if (!noticia || !noticia.genero || !noticia.titulo || !noticia.subtitulo || !noticia.artigo || !noticia.autor || !noticia.data || !noticia.hora) {
             res.status(400).send("Precisa passar as informações")
             return
         }
