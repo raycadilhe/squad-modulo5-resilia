@@ -20,7 +20,6 @@ class contatoController {
     //POST - Adição de contatos
     static async inserir(req, res) {
         const contato = {
-            id: req.body.id,
             nome: req.body.nome,
             sobrenome: req.body.sobrenome,
             email: req.body.email,
@@ -30,7 +29,7 @@ class contatoController {
             hora: req.body.hora,
         }
 
-        if (!contato || !contato.id || !contato.nome || !contato.sobrenome || !contato.email || !contato.comentario ||
+        if (!contato || !contato.nome || !contato.sobrenome || !contato.email || !contato.comentario ||
             !contato.conceito || !contato.data || !contato.hora) {
             res.status(400).send("Precisa passar as informações")
             return

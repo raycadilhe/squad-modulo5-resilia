@@ -22,14 +22,13 @@ class adminController {
     // POST  --  Criar um novo Administrador
     static async inserir(req, res) {
         const admin = {
-            id: req.body.nome,
             nome: req.body.nome,
             sobrenome: req.body.nome,
             email: req.body.email,
             senha: req.body.senha
         }
 
-        if (!admin || !admin.id || !admin.nome || !admin.sobrenome || !admin.email || !admin.senha) {
+        if (!admin || !admin.nome || !admin.sobrenome || !admin.email || !admin.senha) {
             res.status(400).send("Precisa passar as informações")
             return
         }
