@@ -60,11 +60,11 @@ class AdminDAO {
   // PUT  --  
   static atualizar(id, admin){
     const query =
-    "UPDATE ADMIN SET nome = ?, email = ?, senha = ? WHERE id = ?";
+    "UPDATE ADMIN SET nome = ?, sobrenome = ? , email = ?, senha = ? WHERE id = ?";
     return new Promise((resolve, reject) =>{
       db.run(
         query,
-        [admin.nome, admin.email, admin.endereco, id],
+        [admin.nome, admin.sobrenome, admin.email, admin.senha],
         (err)=>{
           if (err){
             reject({
