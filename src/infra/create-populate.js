@@ -36,6 +36,7 @@ function populaTabelaUsr() {
     });
 }
 
+//==== Parceiros
 const PARCEIROS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "PARCEIROS" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -68,7 +69,7 @@ function populaTabelaParceiros() {
     });
 }
 
-//==== Admin
+//==== ADMIN
 const ADMIN_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "ADMIN" (
 "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -128,7 +129,7 @@ function populaTabelaContato() {
      });
 };
 
-//==== Imagens
+//==== IMAGENS
 const IMAGENS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "IMAGENS" (
     "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -160,7 +161,7 @@ function populaTabelaImagens() {
 
 
 
-//==== Noticias
+//==== NOTICIAS
 const NOTICIAS_SCHEMA = `
 CREATE TABLE IF NOT EXISTS "NOTICIAS" (
 "ID" INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -174,7 +175,7 @@ CREATE TABLE IF NOT EXISTS "NOTICIAS" (
 )`
 
 const ADD_NOTICIAS_DATA = `
-INSERT INTO NOTICIAS (ID,GENERO, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, TIME)
+INSERT INTO NOTICIAS (GENERO, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, HORA)
 VALUES ( ? , ?, ?, ?, ?, ?, ?)
 `
 
