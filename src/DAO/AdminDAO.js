@@ -17,10 +17,10 @@ class AdminDAO {
      
     // POST  --  Criar um novo Administrador
     static inserir(admin){
-         const query = `INSERT INTO ADMIN (nome, sobrenome, emai, senha) VALUES (?, ?, ?, ?)`;
+         const query = `INSERT INTO ADMIN (nome, sobrenome, email, senha) VALUES (?, ?, ?, ?)`;
 
          return new Promise((resolve, reject) => {
-             db.run(query, [admin.nome, admin.email, admin.senha], (err) =>{
+             db.run(query, [admin.nome, admin.sobrenome, admin.email, admin.senha], (err) =>{
                 if (err){
                      reject({
                         mensagem: "Erro ao inserir o Administrador",

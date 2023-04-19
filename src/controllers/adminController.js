@@ -83,11 +83,9 @@ class adminController {
             return
         }
 
-        const admin = new Admin(req.body.id, req.body.nome, req.body.sobrenome, req.body.email, req.body.senha)
+        const admin = new Admin(req.body.nome, req.body.sobrenome, req.body.email, req.body.senha)
 
-
-
-        if (!admin || !admin.id || !admin.nome || !admin.sobrenome || !admin.email || !admin.senha) {
+        if (!admin || !admin.nome || !admin.sobrenome || !admin.email || !admin.senha) {
             res.status(400).send("Precisa passar todas as informações")
             return
         }

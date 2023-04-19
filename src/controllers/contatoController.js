@@ -83,7 +83,6 @@ class contatoController {
         }
 
         const contato = new Contato (
-            req.body.id, 
             req.body.nome, 
             req.body.sobrenome, 
             req.body.email, 
@@ -92,7 +91,7 @@ class contatoController {
             req.body.data, 
             req.body.hora)
 
-        if (!contato || !contato.id || !contato.nome || !contato.sobrenome || !contato.email || !contato.comentario ||
+        if (!contato || !contato.nome || !contato.sobrenome || !contato.email || !contato.comentario ||
             !contato.conceito || !contato.data || !contato.hora){
                 res.status(400).send("Precisa passar todas as informações")
                 return
