@@ -17,7 +17,7 @@ class ImagensDAO {
      
     // POST  --  Criar uma nova imagem
     static inserir(imagem){
-         const query = `INSERT INTO IMAGENS (Titulo, Descrição, Url) VALUES (?, ?, ?)`;
+         const query = `INSERT INTO IMAGENS (titulo, descricao, url) VALUES (?, ?, ?)`;
 
          return new Promise((resolve, reject) => {
              db.run(query, 
