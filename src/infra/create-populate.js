@@ -171,7 +171,7 @@ CREATE TABLE IF NOT EXISTS "NOTICIAS" (
 "ARTIGO" varchar(500),
 "AUTOR" varchar(64),
 "DATA" date,
-"TIME" time
+"HORA" time
 )`
 
 const ADD_NOTICIAS_DATA = `

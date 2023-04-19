@@ -29,7 +29,7 @@ class NoticiasDAO {
           noticia.artigo,
           noticia.autor,
           noticia.data,
-          noticia.hora,
+          noticia.hora
         ],
         (err) => {
           if (err) {
