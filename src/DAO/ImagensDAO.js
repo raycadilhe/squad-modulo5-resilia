@@ -66,7 +66,7 @@ class ImagensDAO {
   // PUT  --  Atualizando imagens
   static atualizar(id, imagem){
     const query =
-    "UPDATE IMAGENS SET titulo = ?, descrição = ?, url = ? WHERE id = ?";
+    "UPDATE IMAGENS SET titulo = ?, descricao = ?, url = ? WHERE id = ?";
     return new Promise((resolve, reject) =>{
       db.run(
         query,
