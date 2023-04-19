@@ -1,6 +1,5 @@
 class Imagens {
-    constructor( id, titulo, descricao, url ){
-        this.id = id,
+    constructor( titulo, descricao, url ){
         this.titulo = titulo,
         this.descricao = descricao,
         this.url = url
