@@ -7,9 +7,15 @@ class parceirosController {
         // Rota para o recurso parceiros
         app.get('/parceiros', parceirosController.listar)
         app.post('/parceiros', parceirosController.inserir)
+<<<<<<< HEAD
         app.post("/parceiros/:nome", parceirosController.filtrarPorNome)
         app.delete("/parceiros/id/:id", parceirosController.apagarParceiros)
         app.put("/parceiros/id/:id", parceirosController.atualizarParceiros)
+=======
+        app.get("/parceiros/:nome", parceirosController.filtrarPorNome)
+        app.delete("/parceiros/:nome", parceirosController.apagarParceiros)
+        app.put("/parceiros/:id/:id", parceirosController.atualizarParceiros)
+>>>>>>> e162f0c9849674e8abdb97ab643867aa1e9797e5
     }
 
     // GET -- Listar todos os usuários
