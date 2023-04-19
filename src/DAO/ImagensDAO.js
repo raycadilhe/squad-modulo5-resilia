@@ -25,7 +25,6 @@ class ImagensDAO {
                 imagem.titulo, 
                 imagem.descricao, 
                 imagem.url,
-                id
               ], 
               (err) =>{
                 if (err){
