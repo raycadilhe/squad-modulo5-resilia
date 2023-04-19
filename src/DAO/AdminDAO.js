@@ -64,7 +64,7 @@ class AdminDAO {
     return new Promise((resolve, reject) =>{
       db.run(
         query,
-        [admin.nome, admin.sobrenome, admin.email, admin.senha],
+        [admin.nome, admin.sobrenome, admin.email, admin.senha, id],
         (err)=>{
           if (err){
             reject({
