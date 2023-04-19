@@ -1,6 +1,5 @@
 class Admin {
-    constructor(id, nome, sobrenome, email, senha){
-        this.id = id,
+    constructor( nome, sobrenome, email, senha){
         this.nome = nome,
         this.sobrenome = sobrenome,
         this.email = email,
