@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS "USUARIOS" (
 const ADD_USUARIOS_DATA = `
 INSERT INTO USUARIOS (ID, NOME, EMAIL, SENHA)
 VALUES 
-    (1, 'Eugênio Oliveira', 'eugenio.oliveira@bol.com.br', '*******'),
-    (2, 'Olívia Ribeiro', 'olivia.ribeiro@gmail.com', '********'),
-    (3, 'Mirtes Faria Lima', 'mirtes_fl@yahoo.com', '********')
+    ('Eugênio Oliveira', 'eugenio.oliveira@bol.com.br', '*******'),
+    ('Olívia Ribeiro', 'olivia.ribeiro@gmail.com', '********'),
+    ('Mirtes Faria Lima', 'mirtes_fl@yahoo.com', '********')
 `
 
 function criaTabelaUsr() {
@@ -47,12 +47,12 @@ CREATE TABLE IF NOT EXISTS "PARCEIROS" (
 const ADD_PARCEIROS_DATA = `
 INSERT INTO PARCEIROS (ID, NOME, URLLOGO, DESCRICAO)
 VALUES 
-    (1, 'Prefeitura do Rio de Janeiro', 'https://drive.google.com/file/d/1-NRM6CaDzo4Mt2rSASEfjLhOW1Z6MGYg/view?usp=sharing', 'Instituição sede do poder executivo do município do Rio de Janeiro.'),
-    (2, 'Senac', 'https://drive.google.com/file/d/1-BL20HcOgWdbXGOshXluuXJtBvyc8wzF/view?usp=sharing', 'Desde 1946, o Serviço Nacional de Aprendizagem Comercial – Senac é o principal agente de educação profissional voltado para o Comércio de Bens, Serviços e Turismo do País.'),
-    (3, 'Resilia Educação', 'https://drive.google.com/file/d/1-ORMf-V4rQC5kQoeZHkcLySgwiL3JEb1/view?usp=sharing', 'A Resilia é uma empresa que impacta vidas através da educação enquanto formam profissionais para o setor que mais cresce no mundo: tecnologia. Unindo conhecimento, hábitos de excelência e diversidade, mais do que alunos, formam Resilientes.'),
-    (4, 'Petrobrás', 'https://drive.google.com/file/d/1-N9GqjsQ48A4_6T_fYSOfUFHP8QSH6pU/view?usp=sharing', 'A Petrobrás é uma empresa estatal brasileira que atua principalmente na exploração e produção de petróleo e seus derivados e de gás natural.'),
-    (5, 'Banco do Brasil', 'https://drive.google.com/file/d/1-F_amE2z2eSiS9wgB98LuY2wsT-tUbkB/view?usp=sharing', 'O Banco do Brasil é um banco brasileiro, constituído na forma de sociedade de economia mista, com participação do Governo Federal do Brasil em 50% das ações. É um dos cinco bancos estatais do governo brasileiro, tendo como acionistas, para além da União, capital estrangeiro, livre capital nacional e ações em tesouraria.'),
-    (6, 'Eletrobras', 'https://drive.google.com/file/d/1-IphyCQpMznZW3pHJ_ihaJR38xhDZqom/view?usp=sharing', 'A Eletrobras é uma empresa brasileira de capital aberto que atua como uma holding, dividida em geração e transmissão, criada em 1962 inicialmente como uma Estatal, para coordenar todas as empresas do setor elétrico.')
+    ('Prefeitura do Rio de Janeiro', 'https://drive.google.com/file/d/1-NRM6CaDzo4Mt2rSASEfjLhOW1Z6MGYg/view?usp=sharing', 'Instituição sede do poder executivo do município do Rio de Janeiro.'),
+    ('Senac', 'https://drive.google.com/file/d/1-BL20HcOgWdbXGOshXluuXJtBvyc8wzF/view?usp=sharing', 'Desde 1946, o Serviço Nacional de Aprendizagem Comercial – Senac é o principal agente de educação profissional voltado para o Comércio de Bens, Serviços e Turismo do País.'),
+    ('Resilia Educação', 'https://drive.google.com/file/d/1-ORMf-V4rQC5kQoeZHkcLySgwiL3JEb1/view?usp=sharing', 'A Resilia é uma empresa que impacta vidas através da educação enquanto formam profissionais para o setor que mais cresce no mundo: tecnologia. Unindo conhecimento, hábitos de excelência e diversidade, mais do que alunos, formam Resilientes.'),
+    ('Petrobrás', 'https://drive.google.com/file/d/1-N9GqjsQ48A4_6T_fYSOfUFHP8QSH6pU/view?usp=sharing', 'A Petrobrás é uma empresa estatal brasileira que atua principalmente na exploração e produção de petróleo e seus derivados e de gás natural.'),
+    ('Banco do Brasil', 'https://drive.google.com/file/d/1-F_amE2z2eSiS9wgB98LuY2wsT-tUbkB/view?usp=sharing', 'O Banco do Brasil é um banco brasileiro, constituído na forma de sociedade de economia mista, com participação do Governo Federal do Brasil em 50% das ações. É um dos cinco bancos estatais do governo brasileiro, tendo como acionistas, para além da União, capital estrangeiro, livre capital nacional e ações em tesouraria.'),
+    ('Eletrobras', 'https://drive.google.com/file/d/1-IphyCQpMznZW3pHJ_ihaJR38xhDZqom/view?usp=sharing', 'A Eletrobras é uma empresa brasileira de capital aberto que atua como uma holding, dividida em geração e transmissão, criada em 1962 inicialmente como uma Estatal, para coordenar todas as empresas do setor elétrico.')
 `
 
 function criaTabelaParceiros() {
@@ -81,8 +81,8 @@ CREATE TABLE IF NOT EXISTS "ADMIN" (
 const ADD_ADMIN_DATA = `
 INSERT INTO ADMIN (ID, NOME, SOBRENOME, EMAIL, SENHA)
 VALUES
-    (0, 'Danilo', 'Santos', 'danilo@gmail.com', '************'),
-    (1, 'Rayssa', 'Cadilhe', 'rayssa@gmail.com', '***********')
+    ('Danilo', 'Santos', 'danilo@gmail.com', '************'),
+    ('Rayssa', 'Cadilhe', 'rayssa@gmail.com', '***********')
 `
 
 function criaTabelaAdmin() {
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS "CONTATO" (
 const ADD_CONTATO_DATA = `
 INSERT INTO CONTATO (ID, NOME, SOBRENOME, EMAIL, COMENTARIO, CONCEITO, DATA, HORA)
 VALUES
-    (0, 'Anderson', 'Vasco', 'caiujacaiu@gmail.com', 'TESTE DE COMENTARIO' , '5' , '17/04/2023', '21:05')
+    ('Anderson', 'Vasco', 'caiujacaiu@gmail.com', 'TESTE DE COMENTARIO' , '5' , '17/04/2023', '21:05')
 `
 
 function criaTabelaContato() {
@@ -140,9 +140,9 @@ CREATE TABLE IF NOT EXISTS "IMAGENS" (
 const ADD_IMAGENS_DATA = `
 INSERT INTO IMAGENS (ID, TITULO, DESCRICAO, URL)
 VALUES 
-    (1, 'Arteiros - Cidade de Deus', 'Formado por crianças e adolescentes com faixa etária entre 09 e 18 anos, na sua maioria moradores da Cidade de Deus.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/326506739_1147356152643248_2154653146716669189_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGOgbioSV9BZ8-m9rkVvxs2OwjrSV4iJsw7COtJXiImzAhChlJEiyJjgoS61Y290MuZn_gexN5k21_vR2KoCRXS&_nc_ohc=Q17ulSv_LPwAX8lJ63L&_nc_ht=scontent.fgig18-1.fna&oh=00_AfA775U6wbdKm9ZVz-i61UFjWyzIsdXRRktylu82TJE18Q&oe=644389C9'),
-    (2, 'Brasil Esperança', 'Sustentabilidade, eficiência e baixo custo de obra, pra ajudar quem mais precisa.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/307309696_425127473035239_1206793186502964153_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG6P7YBLISoCz4P6bwy1S-88C5RSDGszEjwLlFIMazMSIZdJsvUFYexeXVZLl0FWkAL83yBp66zJM-SMRKc19zH&_nc_ohc=OhNxvAFEbwIAX9lGEEA&_nc_ht=scontent.fgig18-1.fna&oh=00_AfDMcN_gT26anx-9CUxnJtZfxsFj7S839ROsHJid33V__Q&oe=6443679F'),
-    (3, 'Recomeçando','Recomeçando é uma instituição sem fins lucrativos que atua na formação de cidadãos desde a infância para mudar o mundo. Acreditamos com todas as nossas forças que se hoje investirmos nas crianças e empoderarmos mulheres garantiremos um amanhã brilhante para o nosso planeta.', 'https://recomecando.ong.br/wp-content/uploads/2022/03/LOGO-ONG-RECOMEC%CC%A7ANDO-4-e1653963140492-2048x993.png' )
+    ('Arteiros - Cidade de Deus', 'Formado por crianças e adolescentes com faixa etária entre 09 e 18 anos, na sua maioria moradores da Cidade de Deus.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/326506739_1147356152643248_2154653146716669189_n.png?_nc_cat=107&ccb=1-7&_nc_sid=e3f864&_nc_eui2=AeGOgbioSV9BZ8-m9rkVvxs2OwjrSV4iJsw7COtJXiImzAhChlJEiyJjgoS61Y290MuZn_gexN5k21_vR2KoCRXS&_nc_ohc=Q17ulSv_LPwAX8lJ63L&_nc_ht=scontent.fgig18-1.fna&oh=00_AfA775U6wbdKm9ZVz-i61UFjWyzIsdXRRktylu82TJE18Q&oe=644389C9'),
+    ('Brasil Esperança', 'Sustentabilidade, eficiência e baixo custo de obra, pra ajudar quem mais precisa.', 'https://scontent.fgig18-1.fna.fbcdn.net/v/t39.30808-6/307309696_425127473035239_1206793186502964153_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_eui2=AeG6P7YBLISoCz4P6bwy1S-88C5RSDGszEjwLlFIMazMSIZdJsvUFYexeXVZLl0FWkAL83yBp66zJM-SMRKc19zH&_nc_ohc=OhNxvAFEbwIAX9lGEEA&_nc_ht=scontent.fgig18-1.fna&oh=00_AfDMcN_gT26anx-9CUxnJtZfxsFj7S839ROsHJid33V__Q&oe=6443679F'),
+    ('Recomeçando','Recomeçando é uma instituição sem fins lucrativos que atua na formação de cidadãos desde a infância para mudar o mundo. Acreditamos com todas as nossas forças que se hoje investirmos nas crianças e empoderarmos mulheres garantiremos um amanhã brilhante para o nosso planeta.', 'https://recomecando.ong.br/wp-content/uploads/2022/03/LOGO-ONG-RECOMEC%CC%A7ANDO-4-e1653963140492-2048x993.png' )
 `
 
 function criaTabelaImagens() {
@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS "NOTICIAS" (
 
 const ADD_NOTICIAS_DATA = `
 INSERT INTO NOTICIAS (ID,GENERO, TITULO, SUBTITULO, ARTIGO, AUTOR, DATA, TIME)
-VALUES ( 0 , ? , ?, ?, ?, ?, ?, ?)
+VALUES ( ? , ?, ?, ?, ?, ?, ?)
 `
 
 function criaTabelaNoticias() {
