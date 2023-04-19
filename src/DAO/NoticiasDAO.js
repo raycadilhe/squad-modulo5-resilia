@@ -85,6 +85,7 @@ class NoticiasDAO {
           noticia.autor,
           noticia.data,
           noticia.hora,
+          id
         ],
         (err) => {
           if (err) {

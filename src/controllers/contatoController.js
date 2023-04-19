@@ -76,10 +76,10 @@ class contatoController {
     }
     //PUT --Atualizar um contato
     static async atualizarContato(req, res){
-        const id = await ContatoDAO.buscarPorId(req.params.id)
+        const id = await ContatoDAO.buscarPorID(req.params.id)
         if(!id){
             res.status (404).send('Contato não encontrado')
-            return
+            a
         }
 
         const contato = new Contato (
@@ -97,7 +97,7 @@ class contatoController {
                 return
             }
 
-            if (!Object.keys(admin).length){
+            if (!Object.keys(contato).length){
                 res.status(400).send('O objeto está sem chave')
                 return
             }

@@ -20,7 +20,7 @@ class ParceirosDAO {
          const query = `INSERT INTO PARCEIROS (nome, urlLogo, descricao) VALUES (?, ?, ?)`;
 
          return new Promise((resolve, reject) => {
-             db.run(query, [usuario.nome, usuario.urlLogo, usuario.descricao], (err) =>{
+             db.run(query, [parceiros.nome, parceiros.urlLogo, parceiros.descricao], (err) =>{
                 if (err){
                      reject({
                         mensagem: "Erro ao inserir o paceiro",
@@ -64,7 +64,7 @@ class ParceirosDAO {
     return new Promise((resolve, reject) =>{
       db.run(
         query,
-        [parceiro.nome, parceiro.urlLogo, parceiro.descricao, id],
+        [parceiros.nome, parceiros.urlLogo, parceiros.descricao, id],
         (err)=>{
           if (err){
             reject({
@@ -83,17 +83,17 @@ class ParceirosDAO {
   }   
 
     // DELETE -- Deletar um parceiro pelo nome
-    static deletar(nome){
-        const query = "DELETE FROM PARCEIROS WHERE nome = ?";
+    static deletar(id){
+        const query = "DELETE FROM PARCEIROS WHERE id = ?";
         return new Promise((resolve,reject) =>{
-          db.run(query, [nome], (err) =>{
+          db.run(query, [id], (err) =>{
             if(err){
               reject({
                 mensagem: "Erro ao deletar o parceiro",
                 erro: err,
               });
             }
-            resolve({mensagem: "Parceiro deletado com sucesso", nome: nome});
+            resolve({mensagem: "Parceiro deletado com sucesso", id: id});
           });
         });
       }   

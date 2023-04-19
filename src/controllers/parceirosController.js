@@ -8,8 +8,8 @@ class parceirosController {
         app.get('/parceiros', parceirosController.listar)
         app.post('/parceiros', parceirosController.inserir)
         app.post("/parceiros/:nome", parceirosController.filtrarPorNome)
-        app.delete("/parceiros/:nome", parceirosController.apagarParceiros)
-        app.put("/parceiros/:id/:id", parceirosController.atualizarParceiros)
+        app.delete("/parceiros/id/:id", parceirosController.apagarParceiros)
+        app.put("/parceiros/id/:id", parceirosController.atualizarParceiros)
     }
 
     // GET -- Listar todos os usuários
@@ -57,17 +57,17 @@ class parceirosController {
 }
 
 
-// DELETE -- Deletar um parceiro pelo nome
+// DELETE -- Deletar um parceiro pelo ID
 
 static async apagarParceiros(req, res){
-    const parceiros = await ParceirosDAO.buscarPorNome(req.params.nome)
+    const parceiros = await ParceirosDAO.buscarPorID(req.params.id)
 
     if(!parceiros){
         res.status(404).send("Parceiro não encontrado")
         return
     }
 
-    const result = await ParceirosDAO.deletar(req.params.nome)
+    const result = await ParceirosDAO.deletar(req.params.id)
 
     if(result.erro){
          res.status(400).send({ 'Mensagem': 'Parceiro não deletado' })

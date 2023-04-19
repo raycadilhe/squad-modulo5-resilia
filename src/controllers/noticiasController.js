@@ -8,7 +8,7 @@ class noticiasController {
         app.get('/noticia', noticiasController.listar)
         app.post('/noticia', noticiasController.inserir)
         app.get("/noticia/:titulo", noticiasController.filtrarPorTitulo)
-        app.delete("/noticia/:id", noticiasController.apagarNoticia)
+        app.delete("/noticia/id/:id", noticiasController.apagarNoticia)
         app.put("/noticia/id/:id", noticiasController.atualizarNoticia)
     }
 

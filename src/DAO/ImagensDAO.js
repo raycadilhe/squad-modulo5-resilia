@@ -17,14 +17,14 @@ class ImagensDAO {
      
     // POST  --  Criar uma nova imagem
     static inserir(imagem){
-         const query = `INSERT INTO IMAGENS (Titulo, Descrição, Url) VALUES (?, ?, ?)`;
+         const query = `INSERT INTO IMAGENS (titulo, descricao, url) VALUES (?, ?, ?)`;
 
          return new Promise((resolve, reject) => {
              db.run(query, 
               [
-                imagem.nome, 
-                imagem.email, 
-                imagem.senha
+                imagem.titulo, 
+                imagem.descricao, 
+                imagem.url
               ], 
               (err) =>{
                 if (err){
@@ -39,10 +39,10 @@ class ImagensDAO {
     }
     
     // GET -- BUSCAR POR Titulo
-    static buscarPorTitulo(Titulo) {
+    static buscarPorTitulo(titulo) {
         const query = "SELECT * FROM IMAGENS WHERE titulo = ?";
         return new Promise((resolve, reject) => {
-          db.get(query, [Titulo], (err, row) => {
+          db.get(query, [titulo], (err, row) => {
             if (err) {
               reject(false);
             }
@@ -51,10 +51,10 @@ class ImagensDAO {
         });
       }
 
-    static buscarPorID(Id) {
-        const query = "SELECT * FROM IMAGENS WHERE Id = ?";
+    static buscarPorID(id) {
+        const query = "SELECT * FROM IMAGENS WHERE id = ?";
         return new Promise((resolve, reject) => {
-          db.get(query, [Id], (err, row) => {
+          db.get(query, [id], (err, row) => {
             if (err) {
               reject(false);
             }
@@ -66,13 +66,13 @@ class ImagensDAO {
   // PUT  --  Atualizando imagens
   static atualizar(id, imagem){
     const query =
-    "UPDATE IMAGENS SET titulo = ?, descrição = ?, url = ? WHERE id = ?";
+    "UPDATE IMAGENS SET titulo = ?, descricao = ?, url = ? WHERE id = ?";
     return new Promise((resolve, reject) =>{
       db.run(
         query,
         [
         imagem.titulo, 
-        imagem.descrição, 
+        imagem.descricao, 
         imagem.url,
         id
         ],
