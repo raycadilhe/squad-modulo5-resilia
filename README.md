@@ -24,17 +24,10 @@ npm start
 Acesse através da url http://localhost:3000
 *******
 
-## 💻 Como executar localmente? 
-
-
-
 **Para visualizar a API no render, acesse:** https://squad-modulo5.onrender.com/
 
-
-
-
 *******
-# Rotas 
+# Rotas criadas
 ### USUARIO
  GET /usuario
  
